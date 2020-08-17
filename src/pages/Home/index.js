@@ -8,7 +8,7 @@ const POPULARS = ['Cobra Stallone','Cobra Kai','Rambo','Karate Kid','Jonh Wick']
 
 export default function Home(){
     const [keyword,setKeyword] = useState('');
-    const [path,setPath] = useLocation();
+    const [,setPath] = useLocation();
     const {loading,gifs} = useGifs();
 
     const handleSubmit = (e) => {

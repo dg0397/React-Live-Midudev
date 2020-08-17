@@ -11,6 +11,7 @@ export default function getGifs(setState,word,setStatus){
             const {url} = images.downsized_medium;
             return {url,id,title}
         });
+        console.log("Fetching")
         setState(newGifs);
         setStatus(false)
         })

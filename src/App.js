@@ -1,10 +1,11 @@
 import React from 'react';
-import './App.css';
-import Home from './pages/Home';
-import SearchResults from './pages/SearchResults';
-import Detail from './pages/Detail';
+import 'App.css';
 
-import { GifsContextProvider } from './context/GifsContext';
+import Home from 'pages/Home';
+import SearchResults from 'pages/SearchResults';
+import Detail from 'pages/Detail';
+
+import { GifsContextProvider } from 'context/GifsContext';
 
 import { Route, Link } from "wouter";
 

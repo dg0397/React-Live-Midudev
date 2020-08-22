@@ -18,3 +18,18 @@
   color: white;
   padding: 1rem 2rem;
 }
+
+.App-main{
+  display: grid;
+  grid-template-columns: 1fr ;
+}
+
+.App-results{
+  min-height: 100vh;
+}
+
+@media screen and (min-width:720px){
+  .App-main{
+    grid-template-columns: 4fr 1fr;
+  }
+}

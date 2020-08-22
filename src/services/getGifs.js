@@ -1,8 +1,8 @@
-const key = '6NDmRXWzvLtd56H066CQhq4O0s05NE6m';
+import {API_KEY,API_URL} from "./settings";
 
-export default function getGifs(setState,word,setStatus){
+export default function getGifs(setState,setStatus,{limit = 25 , keyword = 'america',page = 0} = {}){
     setStatus(true)
-    fetch(`https://api.giphy.com/v1/gifs/search?api_key=${key}&q=${word}&limit=25&offset=0&rating=r&lang=en`)
+    fetch(`${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${page*limit}&rating=r&lang=en`)
       .then(data => data.json())
       .then( gifs => {
         const {data} = gifs
@@ -12,7 +12,13 @@ export default function getGifs(setState,word,setStatus){
             return {url,id,title}
         });
         console.log("Fetching")
-        setState(newGifs);
+        
+        if(page === 0 ){
+          setState(newGifs)
+        }else{
+          setState(prevState => prevState.concat(newGifs))
+        }
+
         setStatus(false)
         })
 }

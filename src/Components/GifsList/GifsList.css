@@ -1,9 +1,11 @@
 .GifsList{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px , 1fr));
-    grid-gap: 20px;
+    gap: 20px;
     width: 80%;
     min-height: 100vh;
     margin: 0 auto ;
     margin-top: 1rem;
+    /*Only available for Firefox*/
+    grid-template-rows: masonry;
 }

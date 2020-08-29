@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
-
-import { useLocation } from 'wouter';
+import React,{useCallback} from 'react'
 
 import Spinner from 'Components/Spinner/index';
 import GifsList from 'Components/GifsList/GifsList';
@@ -10,33 +8,32 @@ import Category from 'Components/Category/Category';
 
 
 import useGifs from 'hooks/useGifs';
+import Form from 'Components/SearchForm/Form';
 
+import {useLocation} from "wouter"
+import { Helmet } from 'react-helmet';
 
 
 const POPULARS = ['Cobra Stallone', 'Cobra Kai', 'Rambo', 'Karate Kid', 'Jonh Wick'];
 
 export default function Home() {
-    const [keyword, setKeyword] = useState('');
-    const [, setPath] = useLocation();
     const { loading, gifs } = useGifs();
+    const [, setPath] = useLocation();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        //GO TO SOME ROUTE
+    const handleSubmit = useCallback(({keyword}) => {
         setPath(`/search/${keyword}`)
-    }
-
-    const handleChange = (e) => {
-        const { value } = e.target;
-        setKeyword(value)
-    }
+    },[setPath]);
 
     return (
         <>
-            <form onSubmit={handleSubmit} >
-                <input onChange={handleChange} value={keyword} type='text' placeholder='Search a gif here...' />
-                <button>Search</button>
-            </form>
+            <Helmet>
+                <title>Home Giffy</title>
+                <meta
+                    name="description"
+                    content="Gif searcher"
+                />
+            </Helmet>
+            <Form handleSubmitProp = {handleSubmit} />
             <div className="App-main">
                 <div className="App-results" >
                     <h3>Ultima Busqueda</h3>

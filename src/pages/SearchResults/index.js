@@ -6,6 +6,7 @@ import GifsList from 'Components/GifsList/GifsList';
 import useGifs from 'hooks/useGifs'
 import useNearScreen from 'hooks/useNearScreen';
 import debounce from 'just-debounce-it';
+import { Helmet } from 'react-helmet';
 
 export default function SearchResults({params}){
     const {gifs,loading,setPages} = useGifs(params);
@@ -23,13 +24,33 @@ export default function SearchResults({params}){
        if(isNearScreen) deboundeHandleNextPage()
    },[isNearScreen,deboundeHandleNextPage])
 
+   const title = gifs ?  `${gifs.length} resultados de ${decodeURI(keyword)}` : '';
+
+    if(loading){
+        return(
+            <Helmet>
+                <title>Loading...</title>
+            </Helmet>
+        )
+    }
     
     return(
         <>
         {
             loading ?
             <Spinner /> :
-            <>
+            <>  
+                <Helmet>
+                    <title>{title}</title>
+                    <meta
+                        name="description"
+                        content={title}
+                    />
+                    <meta
+                    name="rating"
+                    content="General"
+                    />
+                </Helmet>
                 <h3 className = "App-title" >{decodeURI(keyword).toUpperCase()}</h3>
                 <GifsList gifs = {gifs}  />
                 <div className = "viewfinder" ref = {externalRef}></div>

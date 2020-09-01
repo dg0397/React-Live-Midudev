@@ -13,7 +13,7 @@ export default function SearchResults({params}){
     const {gifs,loading,setPages} = useGifs(params);
     const externalRef = useRef();
     const {isNearScreen} = useNearScreen({externalRef : loading ? null : externalRef,once : false, distance : "100px"});
-    const {keyword,rating} = params
+    const {keyword,rating,language} = params
 
 
    const deboundeHandleNextPage = useCallback(debounce(
@@ -25,7 +25,7 @@ export default function SearchResults({params}){
        if(isNearScreen) deboundeHandleNextPage()
    },[isNearScreen,deboundeHandleNextPage])
 
-   const title = gifs ?  `${gifs.length} resultados de ${decodeURI(keyword)}` : '';
+   const title = gifs ?  `${gifs.length} resultados de ${decodeURIComponent(keyword)}` : '';
 
     if(loading){
         return(
@@ -53,7 +53,7 @@ export default function SearchResults({params}){
                     />
                 </Helmet>
                 <header>
-                    <Form initialKeyword = {keyword} initialRating = {rating}/>
+                    <Form initialKeyword = {keyword} initialRating = {rating} initialLanguage = {language}/>
                 </header>
                 <h3 className = "App-title" >{decodeURI(keyword).toUpperCase()}</h3>
                 <GifsList gifs = {gifs}  />

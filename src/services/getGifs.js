@@ -1,8 +1,8 @@
 import {API_KEY,API_URL} from "./settings";
 
-export default function getGifs(setState,setStatus,{limit = 15 , keyword = 'america',page = 0,rating = 'g'} = {}){
+export default function getGifs(setState,setStatus,{limit = 15 , keyword = 'america',page = 0,rating = 'g',language = 'en'} = {}){
     setStatus(true)
-    fetch(`${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${page*limit}&rating=${rating}&lang=en`)
+    fetch(`${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${page*limit}&rating=${rating}&lang=${language}`)
       .then(data => data.json())
       .then( gifs => {
         const {data} = gifs

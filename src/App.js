@@ -23,7 +23,7 @@ function App() {
           </Link>
           <GifsContextProvider>
             <Route component={Home} path='/' />
-            <Route path="/search/:keyword/:rating?" component={SearchResults} />
+            <Route path="/search/:keyword/:rating?/:language?" component={SearchResults} />
             <Route path="/gif/:id" component={Detail} />
             <Route
               path = '/404'

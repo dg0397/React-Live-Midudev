@@ -5,7 +5,7 @@ import GifsContext from 'context/GifsContext';
 const INITIAL_PAGE = 0;
 
 
-export default function useGifs({keyword} = {keyword : null}){
+export default function useGifs({keyword,rating} = {keyword : null}){
     const {gifs, setGifs} = useContext(GifsContext);
     const [loading,setLoading] = useState(false);
 
@@ -17,17 +17,17 @@ export default function useGifs({keyword} = {keyword : null}){
     const keywordToUse = keyword ? keyword : localStorage.getItem('lastKeyword') ? localStorage.getItem('lastKeyword') : "American";
 
     useEffect(() => {
-        getGifs(setGifs,setLoading,{keyword : keywordToUse })
+        getGifs(setGifs,setLoading,{keyword : keywordToUse,rating })
         //Setting keyword in LocalStorage
         localStorage.setItem('lastKeyword',keywordToUse);
-    }, [keywordToUse,setGifs]);
+    }, [keywordToUse,setGifs,rating]);
     
 
     useEffect(() => {
         if(page === INITIAL_PAGE) return;
 
-        getGifs(setGifs,setLoadingNextPage,{keyword : keywordToUse, page})
-    },[page,keywordToUse,setGifs])
+        getGifs(setGifs,setLoadingNextPage,{keyword : keywordToUse, page,rating})
+    },[page,keywordToUse,setGifs,rating])
 
     return {loading,loadingNextPage,gifs,setPages}
 }

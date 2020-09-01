@@ -7,12 +7,13 @@ import useGifs from 'hooks/useGifs'
 import useNearScreen from 'hooks/useNearScreen';
 import debounce from 'just-debounce-it';
 import { Helmet } from 'react-helmet';
+import Form from 'Components/SearchForm/Form';
 
 export default function SearchResults({params}){
     const {gifs,loading,setPages} = useGifs(params);
     const externalRef = useRef();
-    const {isNearScreen} = useNearScreen({externalRef : loading ? null : externalRef,once : false, distance : "250px"});
-    const {keyword} = params
+    const {isNearScreen} = useNearScreen({externalRef : loading ? null : externalRef,once : false, distance : "100px"});
+    const {keyword,rating} = params
 
 
    const deboundeHandleNextPage = useCallback(debounce(
@@ -51,6 +52,9 @@ export default function SearchResults({params}){
                     content="General"
                     />
                 </Helmet>
+                <header>
+                    <Form initialKeyword = {keyword} initialRating = {rating}/>
+                </header>
                 <h3 className = "App-title" >{decodeURI(keyword).toUpperCase()}</h3>
                 <GifsList gifs = {gifs}  />
                 <div className = "viewfinder" ref = {externalRef}></div>

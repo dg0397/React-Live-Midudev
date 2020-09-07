@@ -1,15 +1,19 @@
 import React from 'react';
 import './Gif.css'
-import {Link} from 'wouter'
+import { Link } from 'wouter'
+import Fav from 'Components/Fav';
 
-function Gif({ title, url,id }) {
+function Gif({ title, url, id }) {
     return (
-        <Link to = {`/gif/${id}`}>
-            <div className="Gif">
-                <p>{title}</p>
-                <img src={url} alt={title} />
+        <div className="Gif">
+            <Fav id={id} />
+            <div className = "Gif-content" >
+                <Link to={`/gif/${id}`}>
+                    <p>{title}</p>
+                    <img src={url} alt={title} />
+                </Link>
             </div>
-        </Link>
+        </div>
     )
 }
 

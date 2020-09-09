@@ -8,6 +8,7 @@
     font-size: 20px;
     transition: all .5s ease;
     cursor: pointer;
+    z-index: 10;
 }
 .Fav:hover{
     transform: scale(1.2);

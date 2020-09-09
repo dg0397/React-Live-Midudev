@@ -4,12 +4,14 @@ import 'App.css';
 import SearchResults from 'pages/SearchResults';
 import Detail from 'pages/Detail';
 import Login from 'pages/Login';
+import Register from 'pages/Register';
 
 import { GifsContextProvider } from 'context/GifsContext';
 import { UserContextProvider } from 'context/UserContext';
 
 import { Route, Link, Switch } from "wouter";
 import Header from 'Components/Header';
+
 
 const Home = React.lazy(
   () => import("pages/Home")
@@ -32,6 +34,7 @@ function App() {
                 <Route path="/search/:keyword/:rating?/:language?" component={SearchResults} />
                 <Route path="/gif/:id" component={Detail} />
                 <Route path='/login' component={Login} />
+                <Route path='/register' component={Register} />
                 <Route
                   path='/:rest*'
                   component={() => <h1>PAGE NOT FOUND! :( 404... </h1>}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'wouter';
-import useForm from 'Components/SearchForm/hook'
+import useForm from 'Components/SearchForm/hook';
+import './SearchForm.css'
 
 const RATINGS = ['g', 'pg', 'pg-13', 'r'];
 const LANGUAGES = [
@@ -42,7 +43,7 @@ function Form({ initialKeyword = '', initialRating ,initialLanguage }) {
         updateAllState()
     }
     return (
-        <form onSubmit={handleSubmit} >
+        <form onSubmit={handleSubmit} className = 'SearchForm' >
             <input onChange={handleChange} value={keyword} type='text' placeholder='Search a gif here...' />
             <button>Search</button>
             <select value={rating} onChange={handleChangeRating}>

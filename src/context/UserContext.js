@@ -6,7 +6,7 @@ const Context = React.createContext({});
 export function UserContextProvider({children}){
     const [favs,setFavs] = useState([])
     const [jwt,setJWT] = useState(
-        () => window.sessionStorage.getItem('jwt') ? window.sessionStorage.getItem('jwt') : window.sessionStorage.setItem('jwt','Dionisio') 
+        () => window.sessionStorage.getItem('jwt')
     );
 
     useEffect(()=>{

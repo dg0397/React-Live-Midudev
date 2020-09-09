@@ -1,0 +1,17 @@
+.SearchForm > * {
+    font-size: 16px;
+    border: none;
+    padding: 4px 16px;
+    flex: 1;
+  }
+.SearchForm{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem 0;
+}
+.SearchForminput button[type = 'button']{
+    font-size: 16px;
+    border: none;
+    padding: 4px 16px;
+}

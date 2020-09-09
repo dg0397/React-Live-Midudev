@@ -1,10 +1,11 @@
 import React from 'react'
 import useUser from 'hooks/useUser';
-import { Link } from 'wouter'
+import { Link, useRoute } from 'wouter'
 import './index.css'
 
 function Header() {
-    const {isLogged,logout} = useUser();
+    const { isLogged, logout } = useUser();
+    const [match] = useRoute('/login');
 
     const handleClick = (e) => {
         //e.preventDefault()
@@ -12,10 +13,13 @@ function Header() {
     }
 
     return (
-        <header className = "gf-header" >
-            { isLogged && <Link to = '/' onClick = {handleClick} > Logout </Link>}
-            {! isLogged && <Link to = '/login' > Login </Link>}
-        </header>
+        <>
+            { !match && <header className="gf-header" >
+                {isLogged && <Link to='/' onClick={handleClick} > Logout </Link>}
+                {!isLogged && <Link to='/login' > Login </Link>}
+                <Link to='/register' > Register </Link>
+            </header>}
+        </>
     )
 }
 

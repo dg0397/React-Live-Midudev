@@ -5,6 +5,7 @@ import SearchResults from 'pages/SearchResults';
 import Detail from 'pages/Detail';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
+import ErrorPage from 'pages/ErrorPage'
 
 import { GifsContextProvider } from 'context/GifsContext';
 import { UserContextProvider } from 'context/UserContext';
@@ -37,7 +38,7 @@ function App() {
                 <Route path='/register' component={Register} />
                 <Route
                   path='/:rest*'
-                  component={() => <h1>PAGE NOT FOUND! :( 404... </h1>}
+                  component={ErrorPage}
                 />
               </Switch>
             </GifsContextProvider>

@@ -1,7 +1,7 @@
 import React, { useState , useCallback } from 'react'
 import useUser from 'hooks/useUser';
 
-import './Fav.css';
+import {FavIcon} from './styles'
 
 import Modal from 'Components/Modal';
 import Login from 'Components/Login';
@@ -38,11 +38,11 @@ export default function Fav({id}) {
 
     return (
         <>
-            <button onClick = {handleClick} className = "Fav">
+            <FavIcon onClick = {handleClick}>
                 <span aria-label = {label} role = "img" >
                     {emogi}
                 </span>
-            </button>
+            </FavIcon>
             {
                 showModal && <Modal onClose = {handleClose} >{<Login onLogin = {handleLogin} />}</Modal>
             }

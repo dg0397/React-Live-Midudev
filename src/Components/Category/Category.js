@@ -1,24 +1,23 @@
 import React from 'react';
-import {Link} from 'wouter';
-import './Category.css'
+import {CategoryTitle,CategoryList,CategoryListItem,CategoryLink} from './styles'
 
 export default function Category({ name, options }) {
     return (
-        <div className = 'App-category' >
-            <h3 className='Category-title'>{name}</h3>
-            <ul>
+        <section>
+            <CategoryTitle>{name}</CategoryTitle>
+            <CategoryList>
                 {
-                    options.map(gif => {
+                    options.map((gif,index) => {
                         return (
-                            <li key={gif} >
-                                <Link to={`/search/${gif}`}>
+                            <CategoryListItem key = {gif} index = {index} >
+                                <CategoryLink to={`/search/${gif}`} >
                                     {gif} Gifs
-                                </Link>
-                            </li>
+                                </CategoryLink>
+                            </CategoryListItem>
                         )
                     })
                 }
-            </ul>
-        </div>
+            </CategoryList>
+        </section>
     )
 }

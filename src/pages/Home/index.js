@@ -31,7 +31,7 @@ export default function Home() {
             </header>
             <div className="App-main">
                 <div className="App-results" >
-                    <h3>Ultima Busqueda</h3>
+                    <h3>Last Search</h3>
                     {
                         loading ?
                             <Spinner /> :

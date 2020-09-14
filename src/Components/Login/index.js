@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useLocation } from 'wouter';
 import useUser from 'hooks/useUser';
 import './Login.css';
+import { Button } from 'Components/Button/styles';
 
 export default function Login({onLogin}) {
     const [username, setUserName] = useState('');
@@ -31,7 +32,7 @@ export default function Login({onLogin}) {
     return (
         <>
             {
-                isLoginLoading && <strong>Checking credentials... </strong>
+                isLoginLoading && <strong style = {{color : "white"}} >Checking credentials... </strong>
             }
             {
                 !isLoginLoading && <form  className = 'Form' onSubmit={handleSubmit} >
@@ -51,11 +52,11 @@ export default function Login({onLogin}) {
                         placeholder='password'
                         value={password} />
                     </label>
-                    <button>Login</button>
+                    <Button>Login</Button>
                 </form>
             }
             {
-                hasLoginError && <strong>Credentials are invalid</strong>
+                hasLoginError && <strong style = {{color : "white"}}>Credentials are invalid</strong>
             }
         </>
     )

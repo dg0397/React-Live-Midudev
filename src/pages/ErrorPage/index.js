@@ -4,63 +4,42 @@
 import React from "react";
 import SearchForm from "Components/SearchForm/Form";
 import { Helmet } from "react-helmet";
-import { Link } from "wouter";
 import { css, jsx } from '@emotion/core'
+import Button from "Components/Button";
 
-const pageErrorStyle = css`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    text-align: center;
-`
 
-/**
+const MARGIN = '1rem auto';
+const SIZE = "250px";
 
-.btn {
-    border: 1px solid transparent;
-    padding: .5rem 1rem;
-    background-color: var(--brand-color_3);
-    color: var(--theme-body-txt);
-    cursor: pointer;
-    font-size: 1rem;
+const pageErrorStyles = css({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '1rem',
+  textAlign: 'center'
+});
+
+const codeErrorStyles = css({
+  fontSize: "5rem",
+  fontWeight: "bold",
+  fontStyle: "italic"
+});
+
+const msgErrorStyles = css({
+  fontSize: "1.5rem",
+  margin: MARGIN
+})
+
+const gifErrorStyles = css({
+  margin: MARGIN,
+  width: SIZE,
+  height: SIZE,
+  transition : "all .8s ease",
+  "&:hover":{
+    transform : "scale(1.1)"
   }
-  
-  .btn:hover {
-    background-color: var(--brand-color_6);
-  }
-  
-  .page-error { 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    text-align: center;
-  }
-  
-  .page-error .code-error {
-    font-size: 5rem;
-    font-weight: bold;
-    font-style: italic;
-  }
-  
-  .page-error .msg-error {
-    font-size: 1.5rem;
-    margin: 1rem 0;
-  }
-  
-  .page-error .gif-error {
-    margin: 1rem auto;
-    width: 250px;
-    height: 250px;
-  }
-  
-  .page-error a {
-    text-decoration: none;
-  } 
- */
+})
 
 
 const gifsErrors = ['d2jjuAZzDSVLZ5kI', 'Bp3dFfoqpCKFyXuSzP', 'hv5AEBpH3ZyNoRnABG', 'hLwSzlKN8Fi6I'];
@@ -79,11 +58,11 @@ export default function ErrorPage() {
         <SearchForm />
       </header>
       <div className="App-wrapper">
-        <div css = {pageErrorStyle}>
-            <span className="code-error">404</span>
-            <span className="msg-error">Sometimes gettings lost isn't that bad</span>
-            <img className="gif-error" src={randomImage()} alt="alt-page-404"/>
-            <Link href='/' className="btn">Go to home</Link>
+        <div css = {pageErrorStyles}>
+            <span css = {codeErrorStyles} >404</span>
+            <span css = {msgErrorStyles} >Sometimes gettings lost isn't that bad</span>
+            <img css = {gifErrorStyles}  src={randomImage()} alt="alt-page-404"/>
+            <Button href = '/'>Go back home</Button>
         </div>
       </div>
     </>

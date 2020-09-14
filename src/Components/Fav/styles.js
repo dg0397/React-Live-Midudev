@@ -1,4 +1,6 @@
-.Fav{
+import styled from '@emotion/styled'
+
+export const FavIcon = styled.button`
     display: inline-block;
     position: absolute;
     top: 0;
@@ -9,7 +11,9 @@
     transition: all .5s ease;
     cursor: pointer;
     z-index: 10;
-}
-.Fav:hover{
-    transform: scale(1.2);
-}
+
+    :hover{
+        transform: scale(1.2);
+    }
+
+`

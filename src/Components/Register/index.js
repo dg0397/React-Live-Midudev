@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import registerService from 'services/register'
 import { useForm } from 'react-hook-form';
+import { Button } from 'Components/Button/styles';
  
 export default function Register() {
   const { register, handleSubmit, errors } = useForm(); // initialize the hook
@@ -40,7 +41,7 @@ export default function Register() {
 
       {errors.password && <span className = 'form-error' >{'Password is Required.'}</span>}
       
-      <button disabled={isSubmitting} >Register</button>
+      <Button disabled={isSubmitting} >Register</Button>
     </form>
   );
 }
